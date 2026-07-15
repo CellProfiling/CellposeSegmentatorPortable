@@ -1,0 +1,4 @@
+#nuclei_image,cyto_image1,cyto_image2,output_folder,output_prefix
+input/nuc1.tif,input/mt1.tif,,output,example1_
+#input/nuc2.tif,input/mt2.tif,,output,example2_
+input/nuc3.tif,input/mt3.tif,,output,example3_

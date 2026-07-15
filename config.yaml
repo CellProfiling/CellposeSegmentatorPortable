@@ -1,0 +1,9 @@
+# Optional overrides for the constants in process.py (CLI args override these).
+# Must exist, may be empty. Uncomment and edit as needed.
+
+#nuclei_only: false
+#nuc_diameter: 200
+#cyto_diameter: 1000
+#normalize_nuclei: true
+#use_cpsam: false
+#gpu: false
