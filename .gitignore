@@ -1,0 +1,13 @@
+*.png
+log.txt
+
+*.pyc
+*.pyo
+*.pth
+__pycache__/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
