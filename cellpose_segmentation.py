@@ -103,7 +103,7 @@ def segment(model_nuc, model_cyto, nuclei_img, cyto_img1, cyto_img2, nuc_diamete
         diameter=nuc_diameter,
         normalize=not normalize_nuclei,
     )
-    imsave(output_folder + "/" + output_prefix + "nuclei_mask.png", nuclei_masks)
+    imsave(output_folder + "/" + output_prefix + "nuclei_mask.png", nuclei_masks, check_contrast=False)
 
     if cyto_img1 is not None:
         cell_masks = None
@@ -125,7 +125,7 @@ def segment(model_nuc, model_cyto, nuclei_img, cyto_img1, cyto_img2, nuc_diamete
                 cellprob_threshold=-0.4,
                 normalize=False,
             )
-            imsave(output_folder + "/" + output_prefix + "sam_raw_mask.png", sam_masks)
+            imsave(output_folder + "/" + output_prefix + "sam_raw_mask.png", sam_masks, check_contrast=False)
 
             cell_masks = merge_segmentations(nuclei_masks, sam_masks, None, nuc_diameter)
 
@@ -138,7 +138,7 @@ def segment(model_nuc, model_cyto, nuclei_img, cyto_img1, cyto_img2, nuc_diamete
                 flow_threshold=0.8,
                 cellprob_threshold=-0.4
             )
-            imsave(output_folder + "/" + output_prefix + "cyto1_mask.png", cyto1_masks)
+            imsave(output_folder + "/" + output_prefix + "cyto1_mask.png", cyto1_masks, check_contrast=False)
 
             if cyto_img2 is not None:
                 cyto2_masks, flows, styles = model_cyto.eval(
@@ -148,10 +148,10 @@ def segment(model_nuc, model_cyto, nuclei_img, cyto_img1, cyto_img2, nuc_diamete
                     flow_threshold=0.8,
                     cellprob_threshold=-0.4
                 )
-                imsave(output_folder + "/" + output_prefix + "cyto2_mask.png", cyto2_masks)
+                imsave(output_folder + "/" + output_prefix + "cyto2_mask.png", cyto2_masks, check_contrast=False)
 
                 cell_masks = merge_segmentations(nuclei_masks, cyto1_masks, cyto2_masks, nuc_diameter)
             else:
                 cell_masks = merge_segmentations(nuclei_masks, cyto1_masks, None, nuc_diameter)
 
-        imsave(output_folder + "/" + output_prefix + "cell_mask.png", cell_masks)
+        imsave(output_folder + "/" + output_prefix + "cell_mask.png", cell_masks, check_contrast=False)
